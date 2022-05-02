@@ -74,12 +74,14 @@ function scoreboard() {
   textFont("Georgia");
   textSize(18);
   text("Score: ", 10, 625);
-  text("Highscore: ", 450, 625)
+  text("Highscore: ", 450, 625);
   text(s.score, 70, 625);
-  text(s.highscore, 540, 625)
+  text(s.highscore, 540, 625);
+   if(s.score >= s.highscore)
+    text("최고기록!", 250,625);
 }
 
-// 컨트롤 기능
+// 방향키를 이용한 컨트롤 기능
 
 function keyPressed() {
   if (keyCode === UP_ARROW){
@@ -94,7 +96,7 @@ function keyPressed() {
 }
 
 // 뱀 만들기
-
+// 뱀의 시작 부분
 function Snake() {
   this.x =0;
   this.y =0;
@@ -130,7 +132,7 @@ function Snake() {
     }
   }
 
-// 머리가 꼬리에 닿을 때 사망
+// 머리가 꼬리에 닿을 때 사망하고 현재 점수가 0이 됨
 
   this.death = function() {
     for (var i = 0; i < this.tail.length; i++) {
