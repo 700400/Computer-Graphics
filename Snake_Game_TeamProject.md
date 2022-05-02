@@ -48,10 +48,10 @@ function star(x, y, radius1, radius2, npoints) {
 // 음식이 나타날 위치
 
 function pickLocation() {
-  var cols = floor(playfield/scl);
-  var rows = floor(playfield/scl);
+  var cols = floor(playfield/scl); // floor(n) : n값보다 작거나 같은 수들 중에서 가장 가까운 정수 값을 저장
+  var rows = floor(playfield/scl); 
   food = createVector(floor(random(cols)), floor(random(rows)));
-  food.mult(scl);
+  food.mult(scl); // food에 있는 x와 y좌표에 scl만큼 곱해주는 함수
 
   // 음식이 꼬리와 겹쳐서 생성되는지 확인
 
@@ -156,7 +156,7 @@ function Snake() {
     }
     this.tail[this.total-1] = createVector(this.x, this.y);
 
-// 좌표를 반복해서 this.xspeed*scl만큼 이동시켜서 자연스럽게 이동하게 하기
+// 좌표를 반복해서 this.xspeed(0 아니면 1)*scl만큼 이동시켜서 자연스럽게 이동하게 하기
     this.x = this.x + this.xspeed*scl;
     this.y = this.y + this.yspeed*scl;
 
@@ -171,7 +171,7 @@ function Snake() {
 
   this.show = function(){
     fill('#4CAF50');
- // 꼬리부분
+ // 꼬리부분 
     for (var i = 0; i < this.tail.length; i++) {
         ellipse(this.tail[i].x+10, this.tail[i].y+10, scl, scl);
     }
@@ -181,6 +181,7 @@ function Snake() {
   }
 }
 ```
+
 ## 실행결과
 ![1](img/snakeTeam2.gif)
 
