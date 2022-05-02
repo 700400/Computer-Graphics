@@ -31,7 +31,6 @@ function draw() {
 
 // 별 모양 추가
 
-
 function star(x, y, radius1, radius2, npoints) {
   let angle = TWO_PI / npoints;
   let halfAngle = angle / 2.0;
@@ -157,9 +156,11 @@ function Snake() {
     }
     this.tail[this.total-1] = createVector(this.x, this.y);
 
+// 좌표를 반복해서 this.xspeed*scl만큼 이동시켜서 자연스럽게 이동하게 하기
     this.x = this.x + this.xspeed*scl;
     this.y = this.y + this.yspeed*scl;
 
+// 뱀 머리의 x와 y좌표를 0부터 playfield-scl으로 제한
     this.x = constrain(this.x, 0, playfield-scl);
     this.y = constrain(this.y, 0, playfield-scl);
 
@@ -170,10 +171,12 @@ function Snake() {
 
   this.show = function(){
     fill('#4CAF50');
+ // 꼬리부분
     for (var i = 0; i < this.tail.length; i++) {
         ellipse(this.tail[i].x+10, this.tail[i].y+10, scl, scl);
     }
-
+    
+// 머리부분
     ellipse(this.x+10, this.y+10, scl, scl);
   }
 }
