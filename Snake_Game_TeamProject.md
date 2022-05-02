@@ -57,7 +57,7 @@ function pickLocation() {
 
   for (var i = 0; i < s.tail.length; i++) {
     var pos = s.tail[i];
-    var d = dist(food.x, food.y, pos.x, pos.y);
+    var d = dist(food.x, food.y, pos.x, pos.y); // dist함수는 (a,b,c,d) ab의 좌표와 cd의 좌표사이의 거리를 구함
     if (d < 1) {
       pickLocation();
     }
@@ -161,7 +161,7 @@ function Snake() {
     this.y = this.y + this.yspeed*scl;
 
 // 뱀 머리의 x와 y좌표를 0부터 playfield-scl으로 제한
-    this.x = constrain(this.x, 0, playfield-scl);
+    this.x = constrain(this.x, 0, playfield-scl); // constrain(n,a,b)함수  n을 a와 b사이의 값으로 제한함
     this.y = constrain(this.y, 0, playfield-scl);
 
 
