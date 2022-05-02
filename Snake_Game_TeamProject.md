@@ -1,4 +1,5 @@
-# 소스코드
+# Snake Game 팀프로젝트
+## 소스코드
 ``` java script
 var s;
 var scl = 20;
