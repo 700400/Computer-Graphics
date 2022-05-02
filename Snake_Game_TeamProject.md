@@ -1,12 +1,9 @@
 # 소스코드
 ``` java script
-//Delcare Global Variables
 var s;
 var scl = 20;
 var food;
 playfield = 600;
-
-// p5js Setup function - required
 
 function setup() {
   createCanvas(playfield, 640);
@@ -16,8 +13,6 @@ function setup() {
   pickLocation();
   noStroke();
 }
-
-// p5js Draw function - required
 
 function draw() {
   background('#795548');
@@ -33,6 +28,10 @@ function draw() {
   star(food.x+10,food.y+10, 10, 5,5);
     
 }
+
+// 별 모양 추가
+
+
 function star(x, y, radius1, radius2, npoints) {
   let angle = TWO_PI / npoints;
   let halfAngle = angle / 2.0;
@@ -55,7 +54,7 @@ function pickLocation() {
   food = createVector(floor(random(cols)), floor(random(rows)));
   food.mult(scl);
 
-  // 음식을 먹으면 꼬리에 추가가 되는지 확인
+  // 음식이 꼬리와 겹쳐서 생성되는지 확인
 
   for (var i = 0; i < s.tail.length; i++) {
     var pos = s.tail[i];
@@ -106,10 +105,14 @@ function Snake() {
   this.score = 1;
   this.highscore = 1;
 
+// 이동, 이동방향
+
   this.dir = function(x,y) {
     this.xspeed = x;
     this.yspeed = y;
   }
+
+// 음식을 먹으면 점수가 오르고 꼬리가 1개 더 생김
 
   this.eat = function(pos) {
     var d = dist(this.x, this.y, pos.x, pos.y);
@@ -127,6 +130,8 @@ function Snake() {
     }
   }
 
+// 머리가 꼬리에 닿을 때 사망
+
   this.death = function() {
     for (var i = 0; i < this.tail.length; i++) {
       var pos = this.tail[i];
@@ -138,6 +143,8 @@ function Snake() {
       }
     }
   }
+
+// 꼬리와 위치 업데이트
 
   this.update = function(){
     if (this.total === this.tail.length) {
@@ -156,6 +163,9 @@ function Snake() {
 
 
   }
+  
+// 머리와 꼬리를 화면에 보여줌
+
   this.show = function(){
     fill('#4CAF50');
     for (var i = 0; i < this.tail.length; i++) {
